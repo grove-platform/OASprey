@@ -1,6 +1,6 @@
 import path from 'path';
 
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 
 const openApiSpecsDir = path.resolve(
   path.resolve(
@@ -42,7 +42,7 @@ describe.each(openApiVersions)('openapi %i', (openApiVersion) => {
       };
 
       beforeAll(() => {
-        jestOpenAPI(pathToApiSpec);
+        loadSpec(pathToApiSpec);
       });
 
       it(`passes (non-templated path ${specCase.label} templated path)`, () => {

@@ -1,4 +1,4 @@
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 import path from 'path';
 import {
   matcherHint,
@@ -54,7 +54,7 @@ describe.each(openApiSpecs)(
   'expect(obj).toSatisfySchemaInApiSpec(schemaName) (using an OpenAPI %i spec)',
   ({ openApiVersion, pathToApiSpec }) => {
     beforeAll(() => {
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe("when 'obj' matches a schema defined in the API spec, such that spec expects obj to", () => {

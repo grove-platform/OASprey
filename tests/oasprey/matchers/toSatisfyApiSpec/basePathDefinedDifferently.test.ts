@@ -5,7 +5,7 @@ import {
   matcherHint,
 } from 'jest-matcher-utils';
 
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 import { joinWithNewLines } from '../../../../commonTestResources/utils';
 
 const expectReceivedToSatisfyApiSpec = matcherHint(
@@ -35,7 +35,7 @@ describe('using OpenAPI 2 specs that define basePath differently', () => {
         dirContainingApiSpec,
         'noBasePathProperty.yml',
       );
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe('res.req.path matches an endpoint path', () => {
@@ -95,7 +95,7 @@ describe('using OpenAPI 2 specs that define basePath differently', () => {
         dirContainingApiSpec,
         'basePathProperty.yml',
       );
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe('res.req.path matches the basePath and an endpoint path', () => {

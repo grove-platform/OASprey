@@ -1,1 +1,1 @@
-export { default } from './jest-openapi/index.js';
+export { default, loadSpec } from './oasprey/index.js';

@@ -1,4 +1,4 @@
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 import { EXPECTED_COLOR as green } from 'jest-matcher-utils';
 import path from 'path';
 
@@ -25,7 +25,7 @@ describe.each(openApiSpecs)(
     const obj = 'foo';
 
     beforeAll(() => {
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     it(`fails for OpenAPI v${openApiVersion}`, () => {

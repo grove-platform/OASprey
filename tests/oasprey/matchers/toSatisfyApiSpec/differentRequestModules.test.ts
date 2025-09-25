@@ -1,7 +1,7 @@
 import type { AxiosStatic, AxiosResponse } from 'axios';
 import path from 'path';
 import type { Server } from 'http';
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 import { str } from '../../../../commonTestResources/utils';
 import app from '../../../../commonTestResources/exampleApp';
 
@@ -16,7 +16,7 @@ describe('parsing responses from different request modules', () => {
   let server: Server;
   let appOrigin: string;
   beforeAll(() => {
-    jestOpenAPI(pathToApiSpec);
+    loadSpec(pathToApiSpec);
 
     return new Promise<void>((resolve) => {
       server = app.listen(0, () => {

@@ -8,19 +8,19 @@ declare global {
     interface Matchers<R> {
       /**
        * Check the HTTP response object satisfies a response defined in your OpenAPI spec.
-       * [See usage example](https://github.com/openapi-library/OpenAPIValidators/tree/master/packages/jest-openapi#in-api-tests-validate-the-status-and-body-of-http-responses-against-your-openapi-spec)
+       * [See usage example](https://github.com/dachary-carey/OASprey#in-api-tests-validate-the-status-and-body-of-http-responses-against-your-openapi-spec)
        */
       toSatisfyApiSpec(): R;
       /**
        * Check the object satisfies a schema defined in your OpenAPI spec.
-       * [See usage example](https://github.com/openapi-library/OpenAPIValidators/tree/master/packages/jest-openapi#in-unit-tests-validate-objects-against-schemas-defined-in-your-openapi-spec)
+       * [See usage example](https://github.com/dachary-carey/OASprey#in-unit-tests-validate-objects-against-schemas-defined-in-your-openapi-spec)
        */
       toSatisfySchemaInApiSpec(schemaName: string): R;
     }
   }
 }
 
-export default function (filepathOrObject: string | OpenAPISpecObject): void {
+export function loadSpec(filepathOrObject: string | OpenAPISpecObject): void {
   const openApiSpec = makeApiSpec(filepathOrObject);
 
   const jestMatchers: jest.ExpectExtendMap = {
@@ -47,10 +47,13 @@ export default function (filepathOrObject: string | OpenAPISpecObject): void {
     console.error(
       [
         "Unable to find Jest's global expect.",
-        'Please check you have configured jest-openapi correctly.',
-        'See https://github.com/openapi-library/OpenAPIValidators/tree/master/packages/jest-openapi#usage for help.',
+        'Please check you have configured OASprey correctly.',
+        'See https://github.com/dachary-carey/OASprey#usage for help.',
       ].join('\n'),
     );
   }
   /* istanbul ignore next */
 }
+
+// Export as both named export and default export for flexibility
+export default loadSpec;

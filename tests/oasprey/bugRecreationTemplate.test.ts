@@ -1,7 +1,7 @@
 import path from 'path';
 import { inspect } from 'util';
 
-import jestOpenAPI from '../../src/jest-openapi';
+import { loadSpec } from '../../src/oasprey';
 
 const dirContainingApiSpec = path.resolve(
   path.resolve(
@@ -13,7 +13,7 @@ const dirContainingApiSpec = path.resolve(
 describe('recreate bug (issue #XX)', () => {
   beforeAll(() => {
     const pathToApiSpec = path.join(dirContainingApiSpec, 'openapi.yml');
-    jestOpenAPI(pathToApiSpec);
+    loadSpec(pathToApiSpec);
   });
 
   const res = {

@@ -2,7 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleNameMapper: {
-    '^jest-openapi$': '<rootDir>/src/jest-openapi',
+    '^oasprey$': '<rootDir>/src/oasprey',
   },
   transform: {
     '^.+\\.(ts|tsx)$': ['ts-jest', { tsconfig: 'tsconfig.json' }],

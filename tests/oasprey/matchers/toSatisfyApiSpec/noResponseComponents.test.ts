@@ -1,7 +1,7 @@
 import { RECEIVED_COLOR as red } from 'jest-matcher-utils';
 import path from 'path';
 
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 import { joinWithNewLines } from '../../../../commonTestResources/utils';
 
 const openApiSpecsDir = path.resolve(
@@ -38,7 +38,7 @@ describe.each(
     };
 
     beforeAll(() => {
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     it('fails', () => {

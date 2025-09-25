@@ -1,4 +1,4 @@
-# OpenAPI Validators
+# OASprey
 
 Use Jest to assert that HTTP responses satisfy an OpenAPI spec.
 
@@ -9,7 +9,7 @@ to correct your server, your documentation, or both. The sooner you know the bet
 
 ## Solution 😄
 
-This plugin lets you automatically test whether your server's behaviour and
+This plugin lets you automatically test whether your server's behavior and
 documentation match. It adds Jest matchers that support the
 [OpenAPI standard](https://swagger.io/docs/specification/about/) for
 documenting REST APIs. In your JavaScript tests, you can simply assert
@@ -32,13 +32,13 @@ Features:
 [npm](http://npmjs.org)
 
 ```bash
-npm install --save-dev jest-openapi
+npm install --save-dev oasprey
 ```
 
 [yarn](https://yarnpkg.com/)
 
 ```bash
-yarn add --dev jest-openapi
+yarn add --dev oasprey
 ```
 
 ## Importing
@@ -46,13 +46,17 @@ yarn add --dev jest-openapi
 ES6 / TypeScript
 
 ```typescript
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
+// or
+import loadSpec from 'oasprey';
 ```
 
 CommonJS / JavaScript
 
 ```javascript
-const jestOpenAPI = require('jest-openapi').default;
+const { loadSpec } = require('oasprey');
+// or
+const loadSpec = require('oasprey').default;
 ```
 
 ## Usage
@@ -63,10 +67,10 @@ const jestOpenAPI = require('jest-openapi').default;
 
 ```javascript
 // Import this plugin
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 
 // Load an OpenAPI file (YAML or JSON) into this plugin
-jestOpenAPI('path/to/openapi.yml');
+loadSpec('path/to/openapi.yml');
 
 // Write your test
 describe('GET /example/endpoint', () => {
@@ -173,11 +177,11 @@ The '200' response defined for endpoint 'GET /example/endpoint' in API spec: {
 
 ```javascript
 // Import this plugin and the function you want to test
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 import { functionToTest } from 'path/to/your/code';
 
 // Load an OpenAPI file (YAML or JSON) into this plugin
-jestOpenAPI('path/to/openapi.yml');
+loadSpec('path/to/openapi.yml');
 
 // Write your test
 describe('functionToTest()', () => {
@@ -281,7 +285,7 @@ The 'ExampleSchemaObject' schema in API spec: {
 
 ```javascript
 // Import this plugin
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 
 // Get an object representing your OpenAPI spec
 const openApiSpec = {
@@ -311,7 +315,7 @@ const openApiSpec = {
 };
 
 // Load that OpenAPI object into this plugin
-jestOpenAPI(openApiSpec);
+loadSpec(openApiSpec);
 
 // Write your test
 describe('GET /example/endpoint', () => {
@@ -331,7 +335,7 @@ describe('GET /example/endpoint', () => {
 
 ```javascript
 // Import this plugin and an HTTP client (e.g. axios)
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 import axios from 'axios';
 
 // Write your test
@@ -340,7 +344,7 @@ describe('GET /example/endpoint', () => {
   beforeAll(async () => {
     const response = await axios.get('url/to/openapi/spec');
     const openApiSpec = response.data; // e.g. { openapi: '3.0.0', ... };
-    jestOpenAPI(openApiSpec);
+    loadSpec(openApiSpec);
   });
 
   it('should satisfy OpenAPI spec', async () => {
@@ -357,11 +361,13 @@ describe('GET /example/endpoint', () => {
 
 ## Origin and Changes
 
-This package is forked from [OpenAPIValidators](https://github.com/openapi-library/OpenAPIValidators).
+This package is a hard fork from [OpenAPIValidators](https://github.com/openapi-library/OpenAPIValidators).
 We have:
 
 - Updated and removed dependencies to modern, supported tooling
 - Removed support for Chai and SuperAgent
+- Renamed the package to OASprey for ongoing maintenance
+- Renamed the `jestOpenAPI()` function to `loadSpec()`
 
 Otherwise, we have preserved the original functionality as-is. All credit to
 the folks who contributed to that package!

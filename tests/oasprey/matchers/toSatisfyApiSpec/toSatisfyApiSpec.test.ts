@@ -5,7 +5,7 @@ import {
   EXPECTED_COLOR as green,
 } from 'jest-matcher-utils';
 
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 import { joinWithNewLines, str } from '../../../../commonTestResources/utils';
 
 const expectReceivedToSatisfyApiSpec = matcherHint(
@@ -53,7 +53,7 @@ describe.each(
   'expect(res).toSatisfyApiSpec() (using an OpenAPI %i spec)',
   (openApiVersion, pathToApiSpec) => {
     beforeAll(() => {
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe("when 'res' is not a valid HTTP response object", () => {

@@ -5,7 +5,7 @@ import {
   EXPECTED_COLOR as green,
 } from 'jest-matcher-utils';
 
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 import { joinWithNewLines, str } from '../../../../commonTestResources/utils';
 
 const expectReceivedToSatisfyApiSpec = matcherHint(
@@ -35,7 +35,7 @@ describe('using OpenAPI 3 specs that define servers differently', () => {
         dirContainingApiSpec,
         'noServersProperty.yml',
       );
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe('res.req.path matches an endpoint path', () => {
@@ -95,7 +95,7 @@ describe('using OpenAPI 3 specs that define servers differently', () => {
         dirContainingApiSpec,
         'serversIsEmptyArray.yml',
       );
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe('res.req.path matches an endpoint path', () => {
@@ -152,7 +152,7 @@ describe('using OpenAPI 3 specs that define servers differently', () => {
         dirContainingApiSpec,
         'variousServers.yml',
       );
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe('res.req.path matches no servers', () => {
@@ -290,7 +290,7 @@ describe('using OpenAPI 3 specs that define servers differently', () => {
         dirContainingApiSpec,
         'onlyAbsoluteServersWithBasePaths.yml',
       );
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe('res.req.matches a server and an endpoint path', () => {
@@ -367,7 +367,7 @@ describe('using OpenAPI 3 specs that define servers differently', () => {
         dirContainingApiSpec,
         'noServersWithBasePaths.yml',
       );
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe('res.req.path matches an endpoint path', () => {
@@ -421,7 +421,7 @@ describe('using OpenAPI 3 specs that define servers differently', () => {
         dirContainingApiSpec,
         'withServerVariables.yml',
       );
-      jestOpenAPI(pathToApiSpec);
+      loadSpec(pathToApiSpec);
     });
 
     describe('res.req.path matches a server with a server variable in the path (matches the default value)', () => {

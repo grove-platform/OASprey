@@ -1,36 +1,36 @@
 import path from 'path';
 import fs from 'fs-extra';
 
-import jestOpenAPI from 'jest-openapi';
+import { loadSpec } from 'oasprey';
 
 const invalidArgErrorMessage =
   'The provided argument must be either an absolute filepath or an object representing an OpenAPI specification.\nError details: ';
 
-describe('jestOpenAPI(filepathOrObject)', () => {
+describe('loadSpec(filepathOrObject)', () => {
   describe('number', () => {
     it('throws an error', () => {
-      const func = () => jestOpenAPI(123 as never);
+      const func = () => loadSpec(123 as never);
       expect(func).toThrow(`${invalidArgErrorMessage}Received type 'number'`);
     });
   });
 
   describe('array', () => {
     it('throws an error', () => {
-      const func = () => jestOpenAPI([] as never);
+      const func = () => loadSpec([] as never);
       expect(func).toThrow(`${invalidArgErrorMessage}Received type 'array'`);
     });
   });
 
   describe('object that is not an OpenAPI spec', () => {
     it('throws an error', () => {
-      const func = () => jestOpenAPI({} as never);
+      const func = () => loadSpec({} as never);
       expect(func).toThrow('Invalid OpenAPI spec: [');
     });
   });
 
   describe('object that is an incomplete OpenAPI spec', () => {
     it('throws an error', () => {
-      const func = () => jestOpenAPI({ openapi: '3.0.0' } as never);
+      const func = () => loadSpec({ openapi: '3.0.0' } as never);
       expect(func).toThrow('Invalid OpenAPI spec: [');
     });
   });
@@ -44,13 +44,13 @@ describe('jestOpenAPI(filepathOrObject)', () => {
         ),
       );
       const apiSpec = fs.readJSONSync(pathToApiSpec);
-      expect(() => jestOpenAPI(apiSpec)).not.toThrow();
+      expect(() => loadSpec(apiSpec)).not.toThrow();
     });
   });
 
   describe('non-absolute path', () => {
     it('throws an error', () => {
-      const func = () => jestOpenAPI('./');
+      const func = () => loadSpec('./');
       expect(func).toThrow(
         `${invalidArgErrorMessage}'./' is not an absolute filepath`,
       );
@@ -59,7 +59,7 @@ describe('jestOpenAPI(filepathOrObject)', () => {
 
   describe('absolute path to a non-existent file', () => {
     it('throws an error', () => {
-      const func = () => jestOpenAPI('/non-existent-file.yml');
+      const func = () => loadSpec('/non-existent-file.yml');
       expect(func).toThrow(
         `${invalidArgErrorMessage}ENOENT: no such file or directory, open '/non-existent-file.yml'`,
       );
@@ -74,7 +74,7 @@ describe('jestOpenAPI(filepathOrObject)', () => {
           'commonTestResources/exampleOpenApiFiles/invalid/fileFormat/neitherYamlNorJson.js',
         ),
       );
-      const func = () => jestOpenAPI(pathToApiSpec);
+      const func = () => loadSpec(pathToApiSpec);
       expect(func).toThrow(`${invalidArgErrorMessage}Invalid YAML or JSON:\n`);
     });
   });
@@ -88,7 +88,7 @@ describe('jestOpenAPI(filepathOrObject)', () => {
             'commonTestResources/exampleOpenApiFiles/invalid/fileFormat/emptyYaml.yml',
           ),
         );
-        const func = () => jestOpenAPI(pathToApiSpec);
+        const func = () => loadSpec(pathToApiSpec);
         expect(func).toThrow(
           "Invalid OpenAPI spec: Cannot read properties of undefined (reading 'swagger')",
         );
@@ -102,7 +102,7 @@ describe('jestOpenAPI(filepathOrObject)', () => {
             'commonTestResources/exampleOpenApiFiles/invalid/fileFormat/invalidYamlFormat.yml',
           ),
         );
-        const func = () => jestOpenAPI(pathToApiSpec);
+        const func = () => loadSpec(pathToApiSpec);
         expect(func).toThrow(
           `${invalidArgErrorMessage}Invalid YAML or JSON:\nduplicated mapping key`,
         );
@@ -116,7 +116,7 @@ describe('jestOpenAPI(filepathOrObject)', () => {
             'commonTestResources/exampleOpenApiFiles/invalid/fileFormat/invalidJsonFormat.json',
           ),
         );
-        const func = () => jestOpenAPI(pathToApiSpec);
+        const func = () => loadSpec(pathToApiSpec);
         expect(func).toThrow(
           `${invalidArgErrorMessage}Invalid YAML or JSON:\nduplicated mapping key`,
         );
@@ -130,7 +130,7 @@ describe('jestOpenAPI(filepathOrObject)', () => {
             'commonTestResources/exampleOpenApiFiles/invalid/openApi/openApi3.yml',
           ),
         );
-        const func = () => jestOpenAPI(pathToApiSpec);
+        const func = () => loadSpec(pathToApiSpec);
         expect(func).toThrow('Invalid OpenAPI spec:');
       });
     });
@@ -142,7 +142,7 @@ describe('jestOpenAPI(filepathOrObject)', () => {
             'commonTestResources/exampleOpenApiFiles/invalid/openApi/openApi2.json',
           ),
         );
-        const func = () => jestOpenAPI(pathToApiSpec);
+        const func = () => loadSpec(pathToApiSpec);
         expect(func).toThrow('Invalid OpenAPI spec:');
       });
     });
@@ -156,7 +156,7 @@ describe('jestOpenAPI(filepathOrObject)', () => {
           'commonTestResources/exampleOpenApiFiles/valid/openapi3.yml',
         ),
       );
-      expect(() => jestOpenAPI(pathToApiSpec)).not.toThrow();
+      expect(() => loadSpec(pathToApiSpec)).not.toThrow();
     });
   });
 
@@ -168,7 +168,7 @@ describe('jestOpenAPI(filepathOrObject)', () => {
           'commonTestResources/exampleOpenApiFiles/valid/openapi3.json',
         ),
       );
-      expect(() => jestOpenAPI(pathToApiSpec)).not.toThrow();
+      expect(() => loadSpec(pathToApiSpec)).not.toThrow();
     });
   });
 });
