@@ -1,0 +1,296 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Has various paths with responses to use in testing",
+    "title": "Example OpenApi 2 spec",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/responseBody/string": {
+      "get": {
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response body should be a string",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/responseBody/boolean": {
+      "get": {
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response body should be a boolean",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/HTTPMethod": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      },
+      "post": {
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/multiplePathParams/{param1}/{param2}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "param1",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param2",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/multipleResponsesDefined": {
+      "get": {
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Response body should be a string",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "202": {
+            "description": "Response body should be an integer",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "203": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/pathAndQueryParams/{examplePathParam}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "examplePathParam",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/pathParams/primitive/{stringParam}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "stringParam",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/pathParams/array/{arrayParam}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "arrayParam",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/queryParams": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/responseBody/empty": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/responseBody/emptyObject": {
+      "get": {
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response body is an empty object. (Used to test that res.text is populated instead)",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/responseBody/referencesSchemaObject/simple": {
+      "get": {
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response body references a simple schema object",
+            "schema": {
+              "$ref": "#/definitions/StringSchema"
+            }
+          }
+        }
+      }
+    },
+    "/responseBody/object/depthOver2": {
+      "get": {
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response body should be nested object",
+            "schema": {
+              "type": "object",
+              "required": ["a"],
+              "properties": {
+                "a": {
+                  "type": "object",
+                  "required": ["b"],
+                  "properties": {
+                    "b": {
+                      "type": "object",
+                      "required": ["c"],
+                      "properties": {
+                        "c": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/responseBody/object/withMultipleProperties": {
+      "get": {
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response body should be an object with multiple string properties",
+            "schema": {
+              "type": "object",
+              "required": ["property1", "property2"],
+              "properties": {
+                "property1": {
+                  "type": "string"
+                },
+                "property2": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/responseStatus": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "No response body"
+          },
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/responseReferencesResponseDefinitionObject": {
+      "get": {
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/SimpleResponseDefinitionObject"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "StringSchema": {
+      "type": "string"
+    }
+  },
+  "responses": {
+    "SimpleResponseDefinitionObject": {
+      "description": "Response body should be a string",
+      "schema": {
+        "type": "string"
+      }
+    }
+  }
+}

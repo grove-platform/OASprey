@@ -1,0 +1,15 @@
+node_modules
+coverage/
+.DS_STORE
+dist
+.idea/
+
+# Ignore test build artifacts
+tests/**/*.js
+tests/**/*.d.ts
+tests/**/*.js.map
+
+# Ignore commonTestResources build artifacts
+commonTestResources/**/*.js
+commonTestResources/**/*.d.ts
+commonTestResources/**/*.js.map

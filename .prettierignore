@@ -1,0 +1,11 @@
+# copied from .gitignore:
+node_modules
+.nyc_output/
+coverage/
+.DS_STORE
+dist
+
+# extra:
+yarn.lock
+launch.json
+**/invalidYamlFormat.yml
