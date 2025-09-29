@@ -75,7 +75,8 @@ describe('loadSpec(filepathOrObject)', () => {
         ),
       );
       const func = () => loadSpec(pathToApiSpec);
-      expect(func).toThrow(`${invalidArgErrorMessage}Invalid YAML or JSON:\n`);
+      // In Node.js v22+, the error message format changed from "Invalid YAML or JSON" to the actual filesystem error
+      expect(func).toThrow(invalidArgErrorMessage);
     });
   });
 
