@@ -65,8 +65,12 @@ describe.each(
 
       it('fails', () => {
         const assertion = () => expect(res).toSatisfyApiSpec();
-        expect(assertion).toThrow(/expected.*received.*to satisfy a '204' response defined for endpoint 'GET \/some\/path'/);
-        expect(assertion).toThrow(/received.*had request path.*\/some\/path.*but your API spec has no matching path/);
+        expect(assertion).toThrow(
+          /expected.*received.*to satisfy a '204' response defined for endpoint 'GET \/some\/path'/,
+        );
+        expect(assertion).toThrow(
+          /received.*had request path.*\/some\/path.*but your API spec has no matching path/,
+        );
         expect(assertion).toThrow(/Paths found in API spec:/);
       });
 
