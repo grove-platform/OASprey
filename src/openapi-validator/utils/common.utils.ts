@@ -47,9 +47,7 @@ export const findOpenApiPathMatchingPossiblePathnames = (
   OAPaths: string[],
 ): string | undefined => {
   let openApiPath: string | undefined;
-  // eslint-disable-next-line no-restricted-syntax
   for (const pathname of possiblePathnames) {
-    // eslint-disable-next-line no-restricted-syntax
     for (const OAPath of OAPaths) {
       if (OAPath === pathname) {
         return OAPath;

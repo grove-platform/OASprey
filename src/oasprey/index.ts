@@ -43,7 +43,6 @@ export function loadSpec(filepathOrObject: string | OpenAPISpecObject): void {
   if (jestExpect !== undefined) {
     jestExpect.extend(jestMatchers);
   } else {
-    // eslint-disable-next-line no-console
     console.error(
       [
         "Unable to find Jest's global expect.",

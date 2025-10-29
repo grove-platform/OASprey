@@ -61,6 +61,7 @@ describe('OpenApi2Spec', () => {
   });
 
   it('findResponseDefinition returns undefined if responses is missing', () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { responses, ...specObj } = baseSpec;
     const spec = new OpenApi2Spec(specObj);
     expect(spec.findResponseDefinition('#/responses/Bar')).toBeUndefined();

@@ -52,7 +52,6 @@ describe('parsing responses from different request modules', () => {
             `${appOrigin}/header/application/json/and/responseBody/string`,
           );
         } catch (err) {
-          // eslint-disable-next-line no-console
           console.error('Axios request failed:', err);
           throw err;
         }
@@ -75,7 +74,6 @@ describe('parsing responses from different request modules', () => {
             `${appOrigin}/header/application/json/and/responseBody/emptyObject`,
           );
         } catch (err) {
-          // eslint-disable-next-line no-console
           console.error('Axios request failed:', err);
           throw err;
         }
@@ -96,7 +94,6 @@ describe('parsing responses from different request modules', () => {
         try {
           res = await axios.get(`${appOrigin}/header/text/html`);
         } catch (err) {
-          // eslint-disable-next-line no-console
           console.error('Axios request failed:', err);
           throw err;
         }
@@ -118,7 +115,6 @@ describe('parsing responses from different request modules', () => {
             `${appOrigin}/header/application/json/and/responseBody/nullable`,
           );
         } catch (err) {
-          // eslint-disable-next-line no-console
           console.error('Axios request failed:', err);
           throw err;
         }
@@ -141,7 +137,6 @@ describe('parsing responses from different request modules', () => {
             `${appOrigin}/no/content-type/header/and/no/response/body`,
           );
         } catch (err) {
-          // eslint-disable-next-line no-console
           console.error('Axios request failed:', err);
           throw err;
         }
