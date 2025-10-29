@@ -1,0 +1,1 @@
+npm run typecheck:all && npm run test:ci

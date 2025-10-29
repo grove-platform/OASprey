@@ -25,6 +25,7 @@
     "build": "tsc",
     "test": "jest",
     "test:ci": "jest --ci --runInBand",
+    "prepare": "husky",
     "prepublishOnly": "npm run lint && npm run typecheck:all && npm run test && npm run build",
     "typecheck:tests": "tsc --project tsconfig.test.json",
     "typecheck:common": "tsc --project tsconfig.commonTestResources.json",
@@ -43,17 +44,12 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jest": "^29.0.1",
     "express": "^5.1.0",
-    "husky": "^4.3.0",
+    "husky": "^9.1.7",
     "jest": "^30.0.5",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.4.1",
     "typescript": "^5.9.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run typecheck:all && npm run test:ci"
-    }
   },
   "dependencies": {
     "axios": "^1.12.2",
