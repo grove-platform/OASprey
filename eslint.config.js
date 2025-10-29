@@ -10,8 +10,6 @@ const compat = new FlatCompat({ baseDirectory: __dirname });
 
 export default [
   js.configs.recommended,
-  ...compat.extends('airbnb-base'),
-  ...compat.extends('airbnb-typescript/base'),
   ...compat.extends('plugin:@typescript-eslint/recommended'),
   ...compat.extends('prettier'),
   // TypeScript source files
