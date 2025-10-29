@@ -1,0 +1,20 @@
+# Source files
+src/
+tests/
+commonTestResources/
+
+# Config files
+tsconfig*.json
+jest.config.cjs
+eslint.config.js
+.husky/
+
+# Development files
+.git/
+.github/
+coverage/
+node_modules/
+*.log
+
+# Documentation that's not needed in package
+CONTRIBUTING.md
