@@ -22,17 +22,17 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
+          cache: npm
 
-      - run: yarn install --frozen-lockfile
+      - run: npm ci
 
-      - run: yarn lint
+      - run: npm run lint
 
-      - run: yarn typecheck:all
+      - run: npm run typecheck:all
 
-      - run: yarn test:ci
+      - run: npm run test:ci
 
-      - run: yarn coverage
+      - run: npm run coverage
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
