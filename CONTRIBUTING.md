@@ -3,13 +3,13 @@
 To build and run OASprey from source, clone this repo and install dependencies:
 
 ```sh
-yarn install
+npm install
 ```
 
 To build, run:
 
 ```sh
-yarn build
+npm build
 ```
 
 # Running Tests
