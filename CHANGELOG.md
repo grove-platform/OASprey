@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - Updated `js-yaml` from 4.1.0 to 4.1.1 to address security vulnerability
 - Updated `husky` from 4.3.0 to 9.1.7 to resolve security vulnerabilities
+- Updated `jest` to 30.2.0
+- Updated `rimraf` to 6.1.2
+- Updated `glob`:
+   - Use selective override to keep `glob@7.2.3` for `test-exclude`
+   - Force `glob@>=11.1.0` for all other dependencies
 
 ## [1.0.0] - 2025-10-29
 

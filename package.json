@@ -64,6 +64,9 @@
     "typescript": "^5.9.2"
   },
   "overrides": {
+    "test-exclude": {
+      "glob": "^7.2.3"
+    },
     "glob": ">=11.1.0"
   },
   "dependencies": {
