@@ -1,9 +1,15 @@
 {
   "type": "module",
   "name": "oasprey",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Jest matchers for testing OpenAPI specifications",
-  "keywords": ["jest", "openapi", "testing", "api", "validation"],
+  "keywords": [
+    "jest",
+    "openapi",
+    "testing",
+    "api",
+    "validation"
+  ],
   "homepage": "https://github.com/grove-platform/OASprey#readme",
   "bugs": {
     "url": "https://github.com/grove-platform/OASprey/issues"
