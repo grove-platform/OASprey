@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "oasprey",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Jest matchers for testing OpenAPI specifications",
   "keywords": [
     "jest",
