@@ -48,7 +48,7 @@ If you're working on one of these units, add or update any corresponding tests.
 # Contribution Guidelines
 
 > **Note**: This project is not under active development. We will review and
-respond to issues and PRs, but we may not be able to address them immediately.
+> respond to issues and PRs, but we may not be able to address them immediately.
 
 Thanks for being willing to contribute!
 
@@ -66,7 +66,7 @@ Before submitting bug reports:
 
 1. **Check if the [issue has already been reported](https://github.com/grove-platform/OASPrey/issues)**
 2. **File an issue**: [file an issue](https://github.com/grove-platform/OASprey/issues/new?assignees=&labels=bug&template=bug_report.md&title=) with the details required to recreate
-the bug.
+   the bug.
 
 ## Pull Requests
 
